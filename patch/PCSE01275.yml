@@ -1,0 +1,29 @@
+
+p5d_AutoPlay: &p5d_AutoPlay
+  - [ be16, 0x8111e910, 0x00bf     ] # nop
+
+p5d_IntroSkip: &p5d_IntroSkip
+  - [ be16, 0x8119bc66, 0x00bf     ] # nop
+
+p5d_ModSupport: &p5d_ModSupport
+  - [ be32, 0x81185d06, 0x08f11008 ] # add.w      r8,r8,#0x10
+  - [ be32, 0x81185d0a, 0x15f11005 ] # adds.w     r5,r5,#0x10
+  - [ be16, 0x81185d0e, 0x032c     ] # cmp        r4,#0x3
+
+  - [ be32, 0x813d0d08, 0x6d6f642e ] # mod.cpk
+  - [ be32, 0x813d0d0c, 0x63706b00 ]
+
+  - [ be32, 0x813d0d14, 0xffffffff ] # -1
+
+  - [ be32, 0x813d0d18, 0x76697461 ] # vita.cpk
+  - [ be32, 0x813d0d1c, 0x2e63706b ]
+
+  - [ be32, 0x813d0d24, 0xffffffff ] # -1
+
+  - [ be32, 0x813d0d28, 0x64617461 ] # data.cpk
+  - [ be32, 0x813d0d2c, 0x2e63706b ]
+
+99fbc8ba2d9e2ee50cf1fdf4644abd3e4d010501: # PCSE01275 01.00
+  - [ load, p5d_AutoPlay ]
+  - [ load, p5d_IntroSkip ]
+  - [ load, p5d_ModSupport ]

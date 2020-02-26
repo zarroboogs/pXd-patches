@@ -1,0 +1,29 @@
+
+p3d_AutoPlay: &p3d_AutoPlay
+  - [ be16, 0x8111bd70, 0x00bf     ] # nop
+
+p3d_IntroSkip: &p3d_IntroSkip
+  - [ be16, 0x811980f2, 0x00bf     ] # nop
+
+p3d_ModSupport: &p3d_ModSupport
+  - [ be32, 0x81182192, 0x08f11008 ] # add.w      r8,r8,#0x10
+  - [ be32, 0x81182196, 0x15f11005 ] # adds.w     r5,r5,#0x10
+  - [ be16, 0x8118219a, 0x032c     ] # cmp        r4,#0x3
+
+  - [ be32, 0x813cb408, 0x6d6f642e ] # mod.cpk
+  - [ be32, 0x813cb40c, 0x63706b00 ]
+
+  - [ be32, 0x813cb414, 0xffffffff ] # -1
+
+  - [ be32, 0x813cb418, 0x76697461 ] # vita.cpk
+  - [ be32, 0x813cb41c, 0x2e63706b ]
+
+  - [ be32, 0x813cb424, 0xffffffff ] # -1
+
+  - [ be32, 0x813cb428, 0x64617461 ] # data.cpk
+  - [ be32, 0x813cb42c, 0x2e63706b ]
+
+e825214e32e3149926146a48b9027fb5ac5e7d86: # PCSE01274 01.00
+  - [ load, p3d_AutoPlay ]
+  - [ load, p3d_IntroSkip ]
+  - [ load, p3d_ModSupport ]

@@ -1,0 +1,10 @@
+
+p4d_AutoPlay: &p4d_AutoPlay
+  - [ be16, 0x810a9a0c, 0x00bf     ] # nop
+
+p4d_IntroSkip: &p4d_IntroSkip
+  - [ be16, 0x81126f04, 0x00bf     ] # nop
+
+1b973975c673bb72913d970bd589f149d6e44bf5: # PCSE00764 01.01
+  - [ load, p4d_AutoPlay ]
+  - [ load, p4d_IntroSkip ]
